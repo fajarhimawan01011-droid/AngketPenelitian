@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Penelitian Pembinaan OSN Matematika SD</title>
+<style>
+:root{--ink:#12303a;--mut:#5b7078;--bg:#eef3f2;--line:#cfdcda}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:920px;margin:0 auto;padding:32px 18px 60px}
+.hero{display:grid;grid-template-columns:1fr 150px;gap:24px;align-items:center}
+h1{font-family:Georgia,serif;font-size:clamp(1.7rem,5vw,2.6rem);line-height:1.15;margin:0 0 10px}
+.hero p{margin:0;color:var(--mut)}
+.sc{width:110px;height:110px;perspective:600px;justify-self:center}
+.cb{width:100%;height:100%;position:relative;transform-style:preserve-3d}
+.cb b{position:absolute;inset:0;display:grid;place-items:center;font:700 1.9rem Georgia,serif;color:#fff;background:#0b6e6ed9;border:2px solid #fff}
+.cb b:nth-child(1){transform:translateZ(55px)}.cb b:nth-child(2){transform:rotateY(90deg) translateZ(55px)}
+.cb b:nth-child(3){transform:rotateY(180deg) translateZ(55px)}.cb b:nth-child(4){transform:rotateY(-90deg) translateZ(55px)}
+.cb b:nth-child(5){transform:rotateX(90deg) translateZ(55px)}.cb b:nth-child(6){transform:rotateX(-90deg) translateZ(55px)}
+h2{font-family:Georgia,serif;font-size:1.3rem;margin:34px 0 12px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{--c:#0b6e6e;text-align:left;font:inherit;color:inherit;background:#fff;border:2px solid var(--line);border-top:7px solid var(--c);border-radius:12px;padding:18px;cursor:pointer;transition:transform .18s,box-shadow .18s,opacity .18s,border-color .18s}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 20px #12303a1f}
+.card[aria-pressed=true]{border-color:var(--c);transform:translateY(-4px);box-shadow:0 8px 22px #12303a2e}
+.cards:has([aria-pressed=true]) .card[aria-pressed=false]{opacity:.55}
+.card .em{font-size:2.3rem;line-height:1;display:block;margin-bottom:6px}
+.card strong{display:block;font-size:1.15rem}.card span.s{color:var(--mut);font-size:.9rem}
+:focus-visible{outline:3px solid #f0b34a;outline-offset:2px}
+#pn{background:#fff;border:1px solid var(--line);border-left:7px solid var(--c,#cfdcda);border-radius:12px;padding:20px;margin-top:16px;min-height:96px}
+#pn.in{animation:up .25s ease-out}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#pn h3{font-family:Georgia,serif;margin:0 0 6px;font-size:1.2rem}
+#pn ul{margin:8px 0 16px;padding-left:20px}
+.go{display:inline-block;background:var(--c);color:#fff;text-decoration:none;font-weight:600;padding:12px 24px;border-radius:8px}
+.go:hover{filter:brightness(.9)}
+.empty{color:var(--mut)}
+footer{margin-top:36px;color:var(--mut);font-size:.85rem}
+@media(max-width:700px){.cards{grid-template-columns:1fr}.hero{grid-template-columns:1fr}.sc{order:-1;justify-self:start}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<main>
+<div class="hero">
+ <div>
+  <h1>Pembinaan OSN Matematika SD: kami ingin mendengar pengalamanmu</h1>
+  <p>Penelitian Fajar Himawan, Pascasarjana Pendidikan Matematika UPGRIS, di SD IT Abu Hurairah Sembalun, Lombok Timur.</p>
+ </div>
+ <div class="sc" aria-hidden="true"><div class="cb" id="cb"><b>2</b><b>3</b><b>5</b><b>7</b><b>11</b><b>13</b></div></div>
+</div>
+
+<h2>Anda sebagai siapa?</h2>
+<div class="cards" id="cards">
+ <button class="card" data-r="siswa" style="--c:#d98a1c" aria-pressed="false"><span class="em" aria-hidden="true">🎒</span><strong>Saya siswa</strong><span class="s">Binaan OSN kelas 3, 4, atau 5</span></button>
+ <button class="card" data-r="guru" style="--c:#0b6e6e" aria-pressed="false"><span class="em" aria-hidden="true">📚</span><strong>Saya guru</strong><span class="s">Guru matematika atau pembina OSN</span></button>
+ <button class="card" data-r="validator" style="--c:#5a4fa3" aria-pressed="false"><span class="em" aria-hidden="true">✅</span><strong>Saya validator</strong><span class="s">Ahli yang menilai kelayakan angket</span></button>
+</div>
+
+<div id="pn" aria-live="polite"><p class="empty">Pilih salah satu kartu di atas untuk melihat petunjuk pengisian.</p></div>
+<footer>Jawaban hanya dipakai untuk keperluan akademik dan dijaga kerahasiaannya.</footer>
+</main>
+
+<script>
+const R={
+siswa:{t:"Angket untuk siswa binaan OSN",time:"dua sesi, sekitar 12–15 menit per sesi",href:"angket-siswa.html",btn:"Mulai mengisi angket siswa",
+ li:["Tidak ada jawaban benar atau salah, dan tidak memengaruhi nilai rapor.","Tulis kode dari peneliti atau nama panggilan.","Boleh melewati pertanyaan yang tidak ingin dijawab.","Kalau ada kata yang sulit, minta guru pendamping membacakannya.","Isi dengan jujur sesuai yang kamu rasakan."]},
+guru:{t:"Angket untuk guru matematika dan pembina OSN",time:"20–25 menit",href:"angket-guru.html",btn:"Mulai mengisi angket guru",
+ li:["Yang dicari adalah pengalaman nyata Bapak/Ibu, bukan jawaban yang benar.","Nama boleh dikosongkan jika ingin anonim.","Ada butir pilihan, skala, dan jawaban terbuka.","Jawaban dipakai untuk merancang aplikasi AR pada portal e-learning sekolah."]},
+validator:{t:"Lembar validasi instrumen",time:"sekitar 30 menit",href:"validasi.html",btn:"Mulai mengisi lembar validasi",
+ li:["Menilai kesesuaian umum instrumen, lalu setiap butir angket siswa dan guru.","Tiga aspek: Konstruk (K), Isi (I), dan Bahasa (B), dengan skor 1 sampai 4.","Jawaban tersimpan otomatis di perangkat jika halaman tertutup sebelum selesai.","Kesimpulan akhir: layak, layak dengan revisi, atau belum layak."]}};
+const pn=document.getElementById("pn"),cards=document.querySelectorAll(".card");
+cards.forEach(b=>b.onclick=()=>{
+  const r=R[b.dataset.r];
+  cards.forEach(x=>x.setAttribute("aria-pressed",x===b));
+  pn.style.setProperty("--c",b.style.getPropertyValue("--c"));
+  pn.innerHTML=`<h3>${r.t}</h3><p style="margin:0;color:var(--mut)">Estimasi waktu: ${r.time}</p><ul>${r.li.map(x=>`<li>${x}</li>`).join("")}</ul><a class="go" href="${r.href}">${r.btn}</a>`;
+  pn.classList.remove("in");void pn.offsetWidth;pn.classList.add("in");
+  spin=5;
+});
+// kubus bilangan prima: berputar pelan, mengikuti gerak penunjuk, berputar cepat saat memilih
+const cb=document.getElementById("cb");let ay=30,ax=-20,tx=-20,spin=.4;
+addEventListener("pointermove",e=>{tx=-20+(e.clientY/innerHeight-.5)*50});
+cb.style.transform="rotateX(-20deg) rotateY(30deg)";
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches)(function t(){ay+=spin;spin+=(.4-spin)*.04;ax+=(tx-ax)*.05;cb.style.transform=`rotateX(${ax}deg) rotateY(${ay}deg)`;requestAnimationFrame(t)})();
+</script>
+</body></html>
